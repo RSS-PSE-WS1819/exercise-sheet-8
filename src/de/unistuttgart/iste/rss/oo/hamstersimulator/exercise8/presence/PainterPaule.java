@@ -4,7 +4,11 @@ import de.unistuttgart.iste.rss.oo.hamstersimulator.external.model.Hamster;
 import de.unistuttgart.iste.rss.oo.hamstersimulator.datatypes.Location;
 import de.unistuttgart.iste.rss.oo.hamstersimulator.external.model.Territory;
 import de.unistuttgart.iste.rss.oo.hamstersimulator.datatypes.Direction;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Write a description of class PainterPaule here.
@@ -20,12 +24,15 @@ public class PainterPaule extends SimpleHamsterGame {
 	 * Constructor for objects of class PainterPaule
 	 */
 	public PainterPaule() {
-		game.displayInNewGameWindow();
+		File terFile = new File("territories/territory-painting.ter");
 		try {
-			game.initialize("/territories/territory-painting.ter");
+			InputStream targetStream = new FileInputStream(terFile);
+			game.initialize(targetStream);
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
+		game.displayInNewGameWindow();
+		
 	}
 
 	void multiMove(final int numberOfSteps) {
@@ -42,13 +49,23 @@ public class PainterPaule extends SimpleHamsterGame {
 	 * - space after a digit one or zero put paule to ready position for the next
 	 * digit
 	 */
-	public void testPaintingOne() {
+	@Override
+	public void run() {
+		
 		// initialPosition();
 		// paintZero();
 		// space();
 		// paintZero();
 		// space();
 		// paintOne();
+	}
+	
+	/** 
+	 * execute this method via the run dialog to test your code
+	 */
+	
+	public static void main(String[] args) {
+		(new PainterPaule()).doRun();
 	}
 
 }

@@ -2,13 +2,16 @@ package de.unistuttgart.iste.rss.oo.hamstersimulator.exercise8.presence;
 
 import de.unistuttgart.iste.rss.oo.hamstersimulator.external.model.Hamster;
 import de.unistuttgart.iste.rss.oo.hamstersimulator.datatypes.Location;
-import de.unistuttgart.iste.rss.oo.hamstersimulator.exercise8.homework.SimpleHamsterGame;
 import de.unistuttgart.iste.rss.oo.hamstersimulator.external.model.Territory;
 import de.unistuttgart.iste.rss.oo.hamstersimulator.datatypes.Direction;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
- * Write a description of class PainterPaule here.
+ * Write a description of class CollectorPaule here.
  *
  * @author (your name)
  * @version (a version number or a date)
@@ -21,19 +24,41 @@ public class CollectorPaule extends SimpleHamsterGame {
 	 * Constructor for objects of class PainterPaule
 	 */
 	public CollectorPaule() {
-		game.displayInNewGameWindow();
+		File terFile = new File("territories/territory-collector.ter");
 		try {
-			game.initialize("/territories/territory-collector.ter");
+			InputStream targetStream = new FileInputStream(terFile);
+			game.initialize(targetStream);
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
+		game.displayInNewGameWindow();
+		
 	}
 
+	/**
+	 * Your comment block goes here.
+	 * 
+	 * @param numberOfSteps
+	 */
 	void multiMove(final int numberOfSteps) {
 
 		for (int i = 0; i < numberOfSteps; i++) {
 			paule.move();
 		}
 	}
+	
+	@Override
+	public void run() {
+		
+	}
+	
+	/** 
+	 * execute this method via the run dialog to test your code
+	 */
+	
+	public static void main(String[] args) {
+		(new PainterPaule()).doRun();
+	}
+
 
 }
