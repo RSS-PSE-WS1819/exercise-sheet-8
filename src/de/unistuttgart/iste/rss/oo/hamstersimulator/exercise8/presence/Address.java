@@ -1,4 +1,4 @@
-package de.unistuttgart.iste.rss.oo.hamstersimulator.exercise8.homework;
+package de.unistuttgart.iste.rss.oo.hamstersimulator.exercise8.presence;
 
 /**
  * Write a description of class Address here.
