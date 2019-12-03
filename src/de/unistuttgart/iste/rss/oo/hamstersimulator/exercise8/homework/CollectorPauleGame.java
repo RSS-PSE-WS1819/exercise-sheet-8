@@ -57,7 +57,7 @@ public class CollectorPauleGame extends SimpleHamsterGame {
 	 */
 	
 	public static void main(String[] args) {
-		(new PainterPauleGame()).doRun();
+		(new CollectorPauleGame()).doRun();
 	}
 
 
